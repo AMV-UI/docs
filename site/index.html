@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>amv-docs</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">amv-docs</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#core-asv-rov-robotics-platform" class="nav-link">Core - ASV &amp; ROV Robotics Platform</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#overview" class="nav-link">🚀 Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#architecture" class="nav-link">🏗️ Architecture</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#repository-structure" class="nav-link">📁 Repository Structure</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#platforms-supported" class="nav-link">🤖 Platforms Supported</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#development-status" class="nav-link">🛠️ Development Status</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#getting-started" class="nav-link">🚀 Getting Started</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#core-components" class="nav-link">📋 Core Components</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#configuration" class="nav-link">🔧 Configuration</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#known-issues" class="nav-link">🐛 Known Issues</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#contributing" class="nav-link">🤝 Contributing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#documentation" class="nav-link">📄 Documentation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#support" class="nav-link">📞 Support</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="core-asv-rov-robotics-platform">Core - ASV &amp; ROV Robotics Platform</h1>
+<p>Welcome to the <strong>Core</strong> repository - a comprehensive robotics platform for Autonomous Surface Vehicles (ASV) and Remotely Operated Vehicles (ROV) development and simulation.</p>
+<h2 id="overview">🚀 Overview</h2>
+<p>This repository contains the core packages and simulation environments for developing and testing ASV and ROV systems. The platform integrates multiple simulation environments with a robust ROS2-based backend to provide a complete development ecosystem for marine robotics.</p>
+<h2 id="architecture">🏗️ Architecture</h2>
+<h3 id="backend">Backend</h3>
+<ul>
+<li><strong>ROS2</strong>: Primary communication framework</li>
+<li><strong>Python</strong>: Core development language</li>
+<li><strong>Mission Planning</strong>: Automated mission execution and behavior trees</li>
+</ul>
+<h3 id="simulation-environments">Simulation Environments</h3>
+<ul>
+<li><strong>Unity</strong>: ASV (Autonomous Surface Vehicle) simulation</li>
+<li><strong>Godot</strong>: ROV (Remotely Operated Vehicle) simulation</li>
+</ul>
+<h2 id="repository-structure">📁 Repository Structure</h2>
+<pre><code>core/
+├── core/                    # Core ROS2 packages
+├── core_behavior_tree/      # Mission behavior tree implementation
+├── core_control/           # Control systems and algorithms
+├── core_feature_test/      # Feature testing modules
+├── core_msgs/              # Custom ROS2 message definitions
+├── core_msgs_asv/          # ASV-specific message types
+├── ros_docker_shenanigans/ # Docker configuration for ROS
+└── scripts/                # Utility and deployment scripts
+</code></pre>
+<h2 id="platforms-supported">🤖 Platforms Supported</h2>
+<h3 id="asv-autonomous-surface-vehicle">ASV (Autonomous Surface Vehicle)</h3>
+<ul>
+<li><strong>Simulation</strong>: Unity-based environment</li>
+<li><strong>Features</strong>: </li>
+<li>Autonomous navigation</li>
+<li>Mission planning</li>
+<li>Surface vehicle dynamics</li>
+<li>Sensor integration</li>
+</ul>
+<h3 id="rov-remotely-operated-vehicle">ROV (Remotely Operated Vehicle)</h3>
+<ul>
+<li><strong>Simulation</strong>: Godot-based environment</li>
+<li><strong>Features</strong>:</li>
+<li>Underwater vehicle control</li>
+<li>Teleoperation capabilities</li>
+<li>Underwater physics simulation</li>
+<li>Sensor modeling</li>
+</ul>
+<h2 id="development-status">🛠️ Development Status</h2>
+<blockquote>
+<p>⚠️ <strong>Note</strong>: This project is currently under active development. Both ASV and ROV simulations are in progress and may contain experimental features.</p>
+</blockquote>
+<h3 id="current-development-focus">Current Development Focus</h3>
+<ul>
+<li>Mission planning and behavior tree implementation</li>
+<li>Simulation environment refinement</li>
+<li>Control system optimization</li>
+<li>Message protocol standardization</li>
+</ul>
+<h2 id="getting-started">🚀 Getting Started</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>ROS2 (Humble/Iron recommended)</li>
+<li>Python 3.8+</li>
+<li>Docker (for containerized deployment)</li>
+<li>Unity (for ASV simulation development)</li>
+<li>Godot (for ROV simulation development)</li>
+</ul>
+<h3 id="quick-setup">Quick Setup</h3>
+<ol>
+<li>
+<p><strong>Clone the repository</strong>
+   <code>bash
+   git clone &lt;repository-url&gt;
+   cd core</code></p>
+</li>
+<li>
+<p><strong>Build ROS2 packages</strong>
+   <code>bash
+   colcon build
+   source install/setup.bash</code></p>
+</li>
+<li>
+<p><strong>Run simulation</strong> (when available)
+   ```bash
+   # ASV simulation
+   ros2 launch core_asv simulation.launch.py</p>
+</li>
+</ol>
+<p># ROV simulation<br />
+   ros2 launch core_rov simulation.launch.py
+   ```</p>
+<h2 id="core-components">📋 Core Components</h2>
+<h3 id="mission-planning">Mission Planning</h3>
+<ul>
+<li>Behavior tree-based mission execution</li>
+<li>Waypoint navigation</li>
+<li>Task sequencing and coordination</li>
+</ul>
+<h3 id="control-systems">Control Systems</h3>
+<ul>
+<li>PID controllers for vehicle dynamics</li>
+<li>Adaptive control algorithms</li>
+<li>Safety and emergency protocols</li>
+</ul>
+<h3 id="communication">Communication</h3>
+<ul>
+<li>Custom ROS2 message definitions</li>
+<li>Inter-vehicle communication protocols</li>
+<li>Ground station interface</li>
+</ul>
+<h3 id="simulation">Simulation</h3>
+<ul>
+<li>Physics-based vehicle models</li>
+<li>Environmental conditions modeling</li>
+<li>Sensor simulation and noise modeling</li>
+</ul>
+<h2 id="configuration">🔧 Configuration</h2>
+<p>Configuration files and parameters can be found in each respective package. Key configuration areas include:</p>
+<ul>
+<li>Vehicle parameters and dynamics</li>
+<li>Sensor configurations</li>
+<li>Mission planning parameters</li>
+<li>Communication settings</li>
+</ul>
+<h2 id="known-issues">🐛 Known Issues</h2>
+<p>As this is an active development project, please check the <a href="../../issues">Issues</a> section for current known problems and their status.</p>
+<h2 id="contributing">🤝 Contributing</h2>
+<p>This project is under active development. For contribution guidelines and development workflows, please refer to the project maintainers.</p>
+<h2 id="documentation">📄 Documentation</h2>
+<p>Detailed documentation for each component will be available as the project matures. Current documentation includes:</p>
+<ul>
+<li>API documentation (auto-generated)</li>
+<li>Configuration guides</li>
+<li>Simulation setup instructions</li>
+<li>Development best practices</li>
+</ul>
+<h2 id="support">📞 Support</h2>
+<p>For questions, issues, or contributions, please use the GitHub Issues system or contact the development team.</p>
+<hr />
+<p><em>This documentation is for the Core ASV/ROV robotics platform. Last updated: June 2025</em></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.1.2
+Build Date UTC : 2025-06-26 06:20:47.650818+00:00
+-->

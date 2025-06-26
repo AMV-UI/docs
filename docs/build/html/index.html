@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Core - ASV &amp; ROV Robotics Platform &mdash; Core - ASV &amp; ROV Robotics 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Core - ASV & ROV Robotics
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Core - ASV &amp; ROV Robotics Platform</a><ul>
+<li><a class="reference internal" href="#overview">🚀 Overview</a></li>
+<li><a class="reference internal" href="#architecture">🏗️ Architecture</a><ul>
+<li><a class="reference internal" href="#backend">Backend</a></li>
+<li><a class="reference internal" href="#simulation-environments">Simulation Environments</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#repository-structure">📁 Repository Structure</a></li>
+<li><a class="reference internal" href="#platforms-supported">🤖 Platforms Supported</a><ul>
+<li><a class="reference internal" href="#asv-autonomous-surface-vehicle">ASV (Autonomous Surface Vehicle)</a></li>
+<li><a class="reference internal" href="#rov-remotely-operated-vehicle">ROV (Remotely Operated Vehicle)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#development-status">🛠️ Development Status</a><ul>
+<li><a class="reference internal" href="#current-development-focus">Current Development Focus</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#getting-started">🚀 Getting Started</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#quick-setup">Quick Setup</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#core-components">📋 Core Components</a><ul>
+<li><a class="reference internal" href="#mission-planning">Mission Planning</a></li>
+<li><a class="reference internal" href="#control-systems">Control Systems</a></li>
+<li><a class="reference internal" href="#communication">Communication</a></li>
+<li><a class="reference internal" href="#simulation">Simulation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration">🔧 Configuration</a></li>
+<li><a class="reference internal" href="#known-issues">🐛 Known Issues</a></li>
+<li><a class="reference internal" href="#contributing">🤝 Contributing</a></li>
+<li><a class="reference internal" href="#documentation">📄 Documentation</a></li>
+<li><a class="reference internal" href="#support">📞 Support</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Core - ASV & ROV Robotics</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Core - ASV &amp; ROV Robotics Platform</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="core-asv-rov-robotics-platform">
+<h1>Core - ASV &amp; ROV Robotics Platform<a class="headerlink" href="#core-asv-rov-robotics-platform" title="Link to this heading"></a></h1>
+<p>Welcome to the <strong>Core</strong> repository - a comprehensive robotics platform for Autonomous Surface Vehicles (ASV) and Remotely Operated Vehicles (ROV) development and simulation.</p>
+<section id="overview">
+<h2>🚀 Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>This repository contains the core packages and simulation environments for developing and testing ASV and ROV systems. The platform integrates multiple simulation environments with a robust ROS2-based backend to provide a complete development ecosystem for marine robotics.</p>
+</section>
+<section id="architecture">
+<h2>🏗️ Architecture<a class="headerlink" href="#architecture" title="Link to this heading"></a></h2>
+<section id="backend">
+<h3>Backend<a class="headerlink" href="#backend" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>ROS2</strong>: Primary communication framework</p></li>
+<li><p><strong>Python</strong>: Core development language</p></li>
+<li><p><strong>Mission Planning</strong>: Automated mission execution and behavior trees</p></li>
+</ul>
+</section>
+<section id="simulation-environments">
+<h3>Simulation Environments<a class="headerlink" href="#simulation-environments" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Unity</strong>: ASV (Autonomous Surface Vehicle) simulation</p></li>
+<li><p><strong>Godot</strong>: ROV (Remotely Operated Vehicle) simulation</p></li>
+</ul>
+</section>
+</section>
+<section id="repository-structure">
+<h2>📁 Repository Structure<a class="headerlink" href="#repository-structure" title="Link to this heading"></a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>core/
+├── core/                    # Core ROS2 packages
+├── core_behavior_tree/      # Mission behavior tree implementation
+├── core_control/           # Control systems and algorithms
+├── core_feature_test/      # Feature testing modules
+├── core_msgs/              # Custom ROS2 message definitions
+├── core_msgs_asv/          # ASV-specific message types
+├── ros_docker_shenanigans/ # Docker configuration for ROS
+└── scripts/                # Utility and deployment scripts
+</pre></div>
+</div>
+</section>
+<section id="platforms-supported">
+<h2>🤖 Platforms Supported<a class="headerlink" href="#platforms-supported" title="Link to this heading"></a></h2>
+<section id="asv-autonomous-surface-vehicle">
+<h3>ASV (Autonomous Surface Vehicle)<a class="headerlink" href="#asv-autonomous-surface-vehicle" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Simulation</strong>: Unity-based environment</p></li>
+<li><p><strong>Features</strong>:</p>
+<ul>
+<li><p>Autonomous navigation</p></li>
+<li><p>Mission planning</p></li>
+<li><p>Surface vehicle dynamics</p></li>
+<li><p>Sensor integration</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="rov-remotely-operated-vehicle">
+<h3>ROV (Remotely Operated Vehicle)<a class="headerlink" href="#rov-remotely-operated-vehicle" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Simulation</strong>: Godot-based environment</p></li>
+<li><p><strong>Features</strong>:</p>
+<ul>
+<li><p>Underwater vehicle control</p></li>
+<li><p>Teleoperation capabilities</p></li>
+<li><p>Underwater physics simulation</p></li>
+<li><p>Sensor modeling</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="development-status">
+<h2>🛠️ Development Status<a class="headerlink" href="#development-status" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This project is currently under active development. Both ASV and ROV simulations are in progress and may contain experimental features.</p>
+</div>
+<section id="current-development-focus">
+<h3>Current Development Focus<a class="headerlink" href="#current-development-focus" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Mission planning and behavior tree implementation</p></li>
+<li><p>Simulation environment refinement</p></li>
+<li><p>Control system optimization</p></li>
+<li><p>Message protocol standardization</p></li>
+</ul>
+</section>
+</section>
+<section id="getting-started">
+<h2>🚀 Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
+<section id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>ROS2 (Humble/Iron recommended)</p></li>
+<li><p>Python 3.8+</p></li>
+<li><p>Docker (for containerized deployment)</p></li>
+<li><p>Unity (for ASV simulation development)</p></li>
+<li><p>Godot (for ROV simulation development)</p></li>
+</ul>
+</section>
+<section id="quick-setup">
+<h3>Quick Setup<a class="headerlink" href="#quick-setup" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Clone the repository</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>&lt;repository-url&gt;
+<span class="nb">cd</span><span class="w"> </span>core
+</pre></div>
+</div>
+</li>
+<li><p><strong>Build ROS2 packages</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build
+<span class="nb">source</span><span class="w"> </span>install/setup.bash
+</pre></div>
+</div>
+</li>
+<li><p><strong>Run simulation</strong> (when available)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ASV simulation</span>
+ros2<span class="w"> </span>launch<span class="w"> </span>core_asv<span class="w"> </span>simulation.launch.py
+
+<span class="c1"># ROV simulation</span>
+ros2<span class="w"> </span>launch<span class="w"> </span>core_rov<span class="w"> </span>simulation.launch.py
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="core-components">
+<h2>📋 Core Components<a class="headerlink" href="#core-components" title="Link to this heading"></a></h2>
+<section id="mission-planning">
+<h3>Mission Planning<a class="headerlink" href="#mission-planning" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Behavior tree-based mission execution</p></li>
+<li><p>Waypoint navigation</p></li>
+<li><p>Task sequencing and coordination</p></li>
+</ul>
+</section>
+<section id="control-systems">
+<h3>Control Systems<a class="headerlink" href="#control-systems" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>PID controllers for vehicle dynamics</p></li>
+<li><p>Adaptive control algorithms</p></li>
+<li><p>Safety and emergency protocols</p></li>
+</ul>
+</section>
+<section id="communication">
+<h3>Communication<a class="headerlink" href="#communication" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Custom ROS2 message definitions</p></li>
+<li><p>Inter-vehicle communication protocols</p></li>
+<li><p>Ground station interface</p></li>
+</ul>
+</section>
+<section id="simulation">
+<h3>Simulation<a class="headerlink" href="#simulation" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Physics-based vehicle models</p></li>
+<li><p>Environmental conditions modeling</p></li>
+<li><p>Sensor simulation and noise modeling</p></li>
+</ul>
+</section>
+</section>
+<section id="configuration">
+<h2>🔧 Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>Configuration files and parameters can be found in each respective package. Key configuration areas include:</p>
+<ul class="simple">
+<li><p>Vehicle parameters and dynamics</p></li>
+<li><p>Sensor configurations</p></li>
+<li><p>Mission planning parameters</p></li>
+<li><p>Communication settings</p></li>
+</ul>
+</section>
+<section id="known-issues">
+<h2>🐛 Known Issues<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<p>As this is an active development project, please check the <a class="reference external" href="../../issues">Issues</a> section for current known problems and their status.</p>
+</section>
+<section id="contributing">
+<h2>🤝 Contributing<a class="headerlink" href="#contributing" title="Link to this heading"></a></h2>
+<p>This project is under active development. For contribution guidelines and development workflows, please refer to the project maintainers.</p>
+</section>
+<section id="documentation">
+<h2>📄 Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
+<p>Detailed documentation for each component will be available as the project matures. Current documentation includes:</p>
+<ul class="simple">
+<li><p>API documentation (auto-generated)</p></li>
+<li><p>Configuration guides</p></li>
+<li><p>Simulation setup instructions</p></li>
+<li><p>Development best practices</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="support">
+<h2>📞 Support<a class="headerlink" href="#support" title="Link to this heading"></a></h2>
+<p>For questions, issues, or contributions, please use the GitHub Issues system or contact the development team.</p>
+<hr class="docutils" />
+<p><em>This documentation is for the Core ASV/ROV robotics platform. Last updated: June 2025</em></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, AMV-UI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

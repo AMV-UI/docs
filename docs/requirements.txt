@@ -1,0 +1,4 @@
+sphinx>=4.0.0
+sphinx-rtd-theme
+myst-parser  # If you want to use Markdown with Sphinx
+sphinx-autodoc-typehints  # For better type hint documentation

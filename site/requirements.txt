@@ -1,0 +1,5 @@
+mkdocs>=1.4.0
+mkdocs-material  
+
+
+# Add other MkDocs plugins here
