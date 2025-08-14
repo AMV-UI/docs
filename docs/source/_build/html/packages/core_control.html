@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Issues Documentation" href="../issues_docs.html" />
-    <link rel="prev" title="core Documentation" href="core.html" /> 
+    <link rel="prev" title="core" href="core.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,11 +46,15 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../core_docs.html">Core Packages Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="core.html">core Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html">core</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">core_control</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#asv-s-motor-configuration">ASV’s Motor Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#asv-s-motor-movement-example-turn-right">ASV’s Motor Movement Example: Turn Right</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#asv-s-motor-movement-example-intensity">ASV’s Motor Movement Example: Intensity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#motor-configuration">Motor Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#motor-movement-example-turn-right">Motor Movement Example: Turn Right</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#motor-movement-example-intensity">Motor Movement Example: Intensity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#processing-cmd-vel-topic">Processing /cmd_vel topic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#any-optimization-strat">Any Optimization Strat?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-pid-works">How PID Works?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage-on-waypoint-navigation">Usage on Waypoint Navigation</a></li>
 </ul>
 </li>
 </ul>
@@ -99,21 +103,71 @@
 </dl>
 </li>
 </ul>
-<section id="asv-s-motor-configuration">
-<h2>ASV’s Motor Configuration<a class="headerlink" href="#asv-s-motor-configuration" title="Link to this heading"></a></h2>
+<section id="motor-configuration">
+<h2>Motor Configuration<a class="headerlink" href="#motor-configuration" title="Link to this heading"></a></h2>
 <a class="reference internal image-reference" href="../_images/ASV_MotorConfig.png"><img alt="ASV Motor Configuration" class="align-center" src="../_images/ASV_MotorConfig.png" style="width: 600px;" />
 </a>
 <p>The idea is to manually set PWM through standarized ROS2 topic, /cmd_vel, which is used to control the ASV’s motors. The microcontroller will then convert these commands into appropriate PWM signals for the motors.
 Then the result would be configured movement template, like move_forward, move_backward, turn_left, turn_right, etc.</p>
 </section>
-<section id="asv-s-motor-movement-example-turn-right">
-<h2>ASV’s Motor Movement Example: Turn Right<a class="headerlink" href="#asv-s-motor-movement-example-turn-right" title="Link to this heading"></a></h2>
+<section id="motor-movement-example-turn-right">
+<h2>Motor Movement Example: Turn Right<a class="headerlink" href="#motor-movement-example-turn-right" title="Link to this heading"></a></h2>
 <a class="reference internal image-reference" href="../_images/ASV_MotorMovementExample_Right.png"><img alt="ASV Motor Configuration" class="align-center" src="../_images/ASV_MotorMovementExample_Right.png" style="width: 600px;" />
 </a>
 </section>
-<section id="asv-s-motor-movement-example-intensity">
-<h2>ASV’s Motor Movement Example: Intensity<a class="headerlink" href="#asv-s-motor-movement-example-intensity" title="Link to this heading"></a></h2>
+<section id="motor-movement-example-intensity">
+<h2>Motor Movement Example: Intensity<a class="headerlink" href="#motor-movement-example-intensity" title="Link to this heading"></a></h2>
 <a class="reference internal image-reference" href="../_images/ASV_MotorMovementExample_ExtremeRight.png"><img alt="ASV Motor Configuration" class="align-center" src="../_images/ASV_MotorMovementExample_ExtremeRight.png" style="width: 600px;" />
+</a>
+</section>
+<section id="processing-cmd-vel-topic">
+<h2>Processing /cmd_vel topic<a class="headerlink" href="#processing-cmd-vel-topic" title="Link to this heading"></a></h2>
+<p>We can use this following process to adjust the efforts</p>
+<ol class="arabic simple">
+<li><p>Subscribe to the /cmd_vel topic to receive velocity commands.</p></li>
+<li><p>Parse the incoming messages to extract linear and angular velocity values.</p></li>
+<li><p>Map the velocity values to appropriate motor commands.</p></li>
+<li><p>Publish the motor commands to the respective motor control topics.</p></li>
+</ol>
+</section>
+<section id="any-optimization-strat">
+<h2>Any Optimization Strat?<a class="headerlink" href="#any-optimization-strat" title="Link to this heading"></a></h2>
+<p>We can use the following process to optimize the motor control</p>
+<ol class="arabic simple">
+<li><p>Implement a PID controller to adjust motor speeds based on feedback from the core_perception package.</p></li>
+<li><p>Use the feedback to fine-tune the motor commands for smoother and more accurate movements.</p></li>
+</ol>
+</section>
+<section id="how-pid-works">
+<h2>How PID Works?<a class="headerlink" href="#how-pid-works" title="Link to this heading"></a></h2>
+<p>A PID (Proportional-Integral-Derivative) controller is a control loop feedback mechanism
+widely used in industrial control systems. It calculates an “error” value as the difference between a desired setpoint and a measured process variable, and applies a correction based on proportional, integral, and derivative terms.</p>
+<p>So THE question appears, which error value we should use?
+The error value can be derived from the difference between the desired position (setpoint) and the current position (measured process variable) of the ASV. This can be obtained from the feedback
+provided by the core_perception package, which processes sensor data to determine the ASV’s current position and orientation.</p>
+<p>Moving to the next thing, what kind of sensor data we can use?
+The core_perception package can provide various sensor data, such as:</p>
+<ul class="simple">
+<li><p>LIDAR data for obstacle detection and mapping (Upcoming feature)</p></li>
+<li><p>Ultrasonic sensors for distance measurement (Upcoming feature)</p></li>
+<li><p>GPS data for position tracking</p></li>
+<li><p>IMU data for orientation and acceleration</p></li>
+<li><p>Depth sensors for underwater navigation (ROV case, upcoming feature)</p></li>
+<li><p>Camera data for visual feedback and obstacle detection (Error value can be derived from midpoint of the image, which is the center of the image, and the object position in the image, in the rectangular coordinates or we often call it bounding box)</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/Vision.png"><img alt="Vision Processing on core_perception package" class="align-center" src="../_images/Vision.png" style="width: 600px;" />
+</a>
+<a class="reference internal image-reference" href="../_images/Vision_2.png"><img alt="Vision Processing on core_perception package" class="align-center" src="../_images/Vision_2.png" style="width: 600px;" />
+</a>
+</section>
+<section id="usage-on-waypoint-navigation">
+<h2>Usage on Waypoint Navigation<a class="headerlink" href="#usage-on-waypoint-navigation" title="Link to this heading"></a></h2>
+<p>We can also use 2 dimensional waypoint navigation, where the ASV / ROV can navigate to a series of predefined waypoints using the core_perception package for feedback and the core_control package for motor control.</p>
+<p>Basically, we first need to fetch the XY coordinates of the self and waypoints from the core_perception package, then we can use the PID controller to adjust the motor speeds based on the feedback from the core_perception package.
+Then we can use the core_control package to control the motors to move towards the waypoints (Dont forget to use PID).</p>
+<a class="reference internal image-reference" href="../_images/waypoint1.png"><img alt="Vision Processing on core_perception package" class="align-center" src="../_images/waypoint1.png" style="width: 600px;" />
+</a>
+<a class="reference internal image-reference" href="../_images/waypoint2.png"><img alt="Vision Processing on core_perception package" class="align-center" src="../_images/waypoint2.png" style="width: 600px;" />
 </a>
 </section>
 </section>
@@ -122,7 +176,7 @@ Then the result would be configured movement template, like move_forward, move_b
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="core.html" class="btn btn-neutral float-left" title="core Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="core.html" class="btn btn-neutral float-left" title="core" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../issues_docs.html" class="btn btn-neutral float-right" title="Issues Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
