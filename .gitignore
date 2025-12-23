@@ -1,3 +1,5 @@
+# Ignore build files
+**/build/
 # Ignore virtual environment folder
-venv/
-.venv/
+**/venv/
+**/.venv/
