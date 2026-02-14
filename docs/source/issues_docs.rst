@@ -1,5 +1,5 @@
 Issues Documentation
-----------------
+--------------------
 
 Contains all the description about the packages:
 you can use the ``lumache.get_random_ingredients()`` function:

@@ -26,14 +26,14 @@ Then the result would be configured movement template, like move_forward, move_b
 
 
 Motor Movement Example: Turn Right
------------------------------
+---------------------------------
 .. image:: ../assets/packages/core_control/ASV_MotorMovementExample_Right.png
    :width: 600
    :alt: ASV Motor Configuration
    :align: center
 
 Motor Movement Example: Intensity
------------------------------
+---------------------------------
 .. image:: ../assets/packages/core_control/ASV_MotorMovementExample_ExtremeRight.png
    :width: 600
    :alt: ASV Motor Configuration

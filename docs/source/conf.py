@@ -98,7 +98,8 @@ napoleon_use_rtype = True
 todo_include_todos = True
 
 # -- Source file types -------------------------------------------------------
+# Map source file suffixes to file types so Sphinx/Myst treat them correctly
 source_suffix = {
-    '.rst': None,
-    '.md': None,
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
 }

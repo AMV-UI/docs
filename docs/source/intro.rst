@@ -56,7 +56,7 @@ Years of cumulative efforts from our dedicated team members.
           :height: 80px
           :alt: AtharAdista
           :target: https://github.com/AtharAdista
-     - ****
+     - **AtharAdista**
        
        `@AtharAdista <https://github.com/AtharAdista>`_
 

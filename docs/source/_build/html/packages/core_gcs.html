@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>core_gcs &mdash; Core - ASV &amp; ROV Robotics 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Issues Documentation" href="../issues_docs.html" />
+    <link rel="prev" title="core_control" href="core_control.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Core - ASV & ROV Robotics
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../core_docs.html">Core Packages Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="core.html">core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_control.html">core_control</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">core_gcs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ringkasan">Ringkasan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#struktur-dan-relasi">Struktur dan relasi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#penjelasan-setiap-file">Penjelasan setiap file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#relasi-antar-komponen">Relasi antar komponen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kelas-dan-fungsi">Kelas dan fungsi</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#core-gcs-core-gcs-gcs-py"><code class="docutils literal notranslate"><span class="pre">core_gcs/core_gcs/gcs.py</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#core-gcs-launch-launch-py"><code class="docutils literal notranslate"><span class="pre">core_gcs/launch/launch.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mock">Mock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cara-menjalankan-core-gcs">Cara menjalankan core_gcs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#build-package">Build package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#jalankan-node-gcs">Jalankan node <code class="docutils literal notranslate"><span class="pre">gcs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#websocket-endpoint">WebSocket endpoint</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-gcs-ui">Basic-GCS (UI)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Ringkasan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#struktur-dan-relasi-utama">Struktur dan relasi utama</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dokumentasi-file-penting">Dokumentasi file penting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cara-menjalankan">Cara menjalankan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#catatan-integrasi">Catatan integrasi</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../issues_docs.html">Issues Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Core - ASV & ROV Robotics</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../core_docs.html">Core Packages Documentation</a></li>
+      <li class="breadcrumb-item active">core_gcs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/packages/core_gcs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="core-gcs">
+<h1>core_gcs<a class="headerlink" href="#core-gcs" title="Link to this heading"></a></h1>
+<section id="ringkasan">
+<h2>Ringkasan<a class="headerlink" href="#ringkasan" title="Link to this heading"></a></h2>
+<p>Package ini adalah node ROS 2 untuk GCS (Ground Control Station) yang membaca data dari berbagai topik ROS (mis. <code class="docutils literal notranslate"><span class="pre">pixhawk</span></code>, kamera, mode, dan misi), lalu menyiarkan (broadcast) data tersebut lewat WebSocket agar UI eksternal bisa subscribe.</p>
+</section>
+<section id="struktur-dan-relasi">
+<h2>Struktur dan relasi<a class="headerlink" href="#struktur-dan-relasi" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Node utama ada di <code class="docutils literal notranslate"><span class="pre">core_gcs/core_gcs/gcs.py</span></code> dan dieksekusi sebagai <code class="docutils literal notranslate"><span class="pre">gcs</span></code> lewat entry point di <code class="docutils literal notranslate"><span class="pre">core_gcs/setup.py</span></code>.</p></li>
+<li><p>Launch file ada di <code class="docutils literal notranslate"><span class="pre">core_gcs/launch/launch.py</span></code> untuk menjalankan node <code class="docutils literal notranslate"><span class="pre">gcs</span></code> dan mengatur parameter <code class="docutils literal notranslate"><span class="pre">track</span></code>.</p></li>
+<li><p>Metadata package (ROS 2/ament) ada di <code class="docutils literal notranslate"><span class="pre">core_gcs/package.xml</span></code>, <code class="docutils literal notranslate"><span class="pre">core_gcs/setup.py</span></code>, <code class="docutils literal notranslate"><span class="pre">core_gcs/setup.cfg</span></code>, dan <code class="docutils literal notranslate"><span class="pre">core_gcs/resource/core_gcs</span></code>.</p></li>
+<li><p>Folder mock ada di <code class="docutils literal notranslate"><span class="pre">core_gcs/core_gcs/mock</span></code> sebagai generator data uji untuk topik tertentu (diringkas di bagian <em>Mock</em>).</p></li>
+</ul>
+</section>
+<section id="penjelasan-setiap-file">
+<h2>Penjelasan setiap file<a class="headerlink" href="#penjelasan-setiap-file" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">core_gcs/package.xml</span></code> — Manifest ROS 2 package. Menyatakan nama package, versi, dependency, dan build type <code class="docutils literal notranslate"><span class="pre">ament_python</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">core_gcs/setup.py</span></code> — Konfigurasi packaging Python. Mendaftarkan entry point <code class="docutils literal notranslate"><span class="pre">gcs</span></code> serta script mock. Mengikutsertakan launch file pada instalasi.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">core_gcs/setup.cfg</span></code> — Konfigurasi lokasi script saat develop/install.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">core_gcs/resource/core_gcs</span></code> — Resource marker untuk ament index (file kosong, namun wajib untuk discovery package).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">core_gcs/core_gcs/__init__.py</span></code> — Inisialisasi package Python (kosong).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">core_gcs/core_gcs/gcs.py</span></code> — Implementasi node GCS + WebSocket server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">core_gcs/launch/launch.py</span></code> — Launch description untuk menjalankan <code class="docutils literal notranslate"><span class="pre">gcs</span></code> dengan parameter <code class="docutils literal notranslate"><span class="pre">track</span></code>.</p></li>
+</ul>
+</section>
+<section id="relasi-antar-komponen">
+<h2>Relasi antar komponen<a class="headerlink" href="#relasi-antar-komponen" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gcs</span></code> (node ROS 2) membuat subscriber ke beberapa topik dari package lain (mis. <code class="docutils literal notranslate"><span class="pre">core</span></code> dan <code class="docutils literal notranslate"><span class="pre">core_msgs</span></code>).</p></li>
+<li><p>Data dari topik diubah menjadi payload JSON dan disiarkan melalui WebSocket (host <code class="docutils literal notranslate"><span class="pre">0.0.0.0</span></code>, port <code class="docutils literal notranslate"><span class="pre">8000</span></code>).</p></li>
+<li><p>Launch file menyediakan argumen <code class="docutils literal notranslate"><span class="pre">track</span></code> dan mem-passing parameter ke node <code class="docutils literal notranslate"><span class="pre">gcs</span></code>.</p></li>
+</ol>
+</section>
+<section id="kelas-dan-fungsi">
+<h2>Kelas dan fungsi<a class="headerlink" href="#kelas-dan-fungsi" title="Link to this heading"></a></h2>
+<section id="core-gcs-core-gcs-gcs-py">
+<h3><code class="docutils literal notranslate"><span class="pre">core_gcs/core_gcs/gcs.py</span></code><a class="headerlink" href="#core-gcs-core-gcs-gcs-py" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Gcs(Node)</span></code></p>
+<ul>
+<li><p><strong>Tugas utama:</strong> Node ROS 2 yang mengumpulkan data dari berbagai topik dan broadcast ke klien WebSocket.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self,</span> <span class="pre">loop)</span></code> — Inisialisasi node, state internal (history posisi, mode, arena), dan memanggil <code class="docutils literal notranslate"><span class="pre">setup()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setup(self)</span></code> — Mendaftarkan seluruh subscriber ROS (pwm, arena, kamera, box detection, pixhawk, misi, pxmode).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pwm_callback(self,</span> <span class="pre">msg)</span></code> — Mengambil nilai channel untuk <code class="docutils literal notranslate"><span class="pre">speed</span></code>, <code class="docutils literal notranslate"><span class="pre">yaw</span></code>, <code class="docutils literal notranslate"><span class="pre">comm</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arena_callback(self,</span> <span class="pre">msg)</span></code> — Memperbarui arena/track aktif.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pxmode_callback(self,</span> <span class="pre">msg)</span></code> — Memperbarui mode Pixhawk.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image_callback(self,</span> <span class="pre">msg)</span></code> — Menyiarkan data kamera yang sudah diproses.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">blue_box_callback(self,</span> <span class="pre">msg)</span></code> — Menyiarkan deteksi box biru.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">green_box_callback(self,</span> <span class="pre">msg)</span></code> — Menyiarkan deteksi box hijau.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mission_callback(self,</span> <span class="pre">msg)</span></code> — Menyiarkan nomor misi aktif.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pixhawk_callback(self,</span> <span class="pre">msg)</span></code> — Memproses data navigasi (lat/lon history, altitude, speed, heading, track), lalu broadcast.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_handle_incoming_data(self,</span> <span class="pre">topic_name,</span> <span class="pre">data)</span></code> — Membungkus data ke format JSON internal dan men-trigger <code class="docutils literal notranslate"><span class="pre">broadcast_message()</span></code> via event loop.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">broadcast_message(self,</span> <span class="pre">message)</span></code> — Mengirim JSON ke semua klien WebSocket yang aktif, serta membersihkan klien yang sudah putus.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">websocket_handler(websocket,</span> <span class="pre">path,</span> <span class="pre">node)</span></code> — Menangani lifecycle koneksi WebSocket (connect/listen/disconnect) untuk satu klien.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make_websocket_handler(node)</span></code> — Wrapper agar kompatibel dengan signature <code class="docutils literal notranslate"><span class="pre">websockets</span></code> versi lama dan baru.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">main_async()</span></code> — Inisialisasi ROS 2, membuat node <code class="docutils literal notranslate"><span class="pre">Gcs</span></code>, menjalankan WebSocket server, dan menjalankan executor ROS di thread terpisah.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">main()</span></code> — Entry point sinkron untuk menjalankan <code class="docutils literal notranslate"><span class="pre">main_async()</span></code>.</p></li>
+</ul>
+</section>
+<section id="core-gcs-launch-launch-py">
+<h3><code class="docutils literal notranslate"><span class="pre">core_gcs/launch/launch.py</span></code><a class="headerlink" href="#core-gcs-launch-launch-py" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">generate_launch_description()</span></code> — Mendeklarasikan argumen <code class="docutils literal notranslate"><span class="pre">track</span></code> (default <code class="docutils literal notranslate"><span class="pre">B</span></code>) dan menjalankan node <code class="docutils literal notranslate"><span class="pre">gcs</span></code> dengan parameter tersebut.</p></li>
+</ul>
+</section>
+</section>
+<section id="mock">
+<h2>Mock<a class="headerlink" href="#mock" title="Link to this heading"></a></h2>
+<p>Folder <code class="docutils literal notranslate"><span class="pre">core_gcs/core_gcs/mock</span></code> berisi node-node uji untuk mensimulasikan data yang biasanya berasal dari sensor/komponen lain:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">core_gcs/core_gcs/mock/mock_mission.py</span></code> — Publisher sederhana untuk data kamera yang diproses (contoh payload string) sebagai simulasi.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">core_gcs/core_gcs/mock/mock_pixhawk.py</span></code> — Simulator data <code class="docutils literal notranslate"><span class="pre">Pixhawk</span></code> dengan pergerakan acak di area kecil.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">core_gcs/core_gcs/mock/mock_pxmode.py</span></code> — Publisher mode Pixhawk (mis. <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">core_gcs/core_gcs/mock/mock_trial.py</span></code> — Simulator <code class="docutils literal notranslate"><span class="pre">Pixhawk</span></code> dengan pola zigzag di area tertentu.</p></li>
+</ul>
+</section>
+<section id="cara-menjalankan-core-gcs">
+<h2>Cara menjalankan core_gcs<a class="headerlink" href="#cara-menjalankan-core-gcs" title="Link to this heading"></a></h2>
+<section id="build-package">
+<h3>Build package<a class="headerlink" href="#build-package" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Pastikan workspace sudah di-root folder proyek, lalu build package <code class="docutils literal notranslate"><span class="pre">core_gcs</span></code>.</p></li>
+</ul>
+</section>
+<section id="jalankan-node-gcs">
+<h3>Jalankan node <code class="docutils literal notranslate"><span class="pre">gcs</span></code><a class="headerlink" href="#jalankan-node-gcs" title="Link to this heading"></a></h3>
+<p>Menjalankan langsung:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>core_gcs<span class="w"> </span>gcs
+</pre></div>
+</div>
+<p>Menjalankan via launch file (dengan pilihan track):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>core_gcs<span class="w"> </span>launch.py<span class="w"> </span>track:<span class="o">=</span>B
+</pre></div>
+</div>
+</section>
+<section id="websocket-endpoint">
+<h3>WebSocket endpoint<a class="headerlink" href="#websocket-endpoint" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Server WebSocket berjalan di <code class="docutils literal notranslate"><span class="pre">ws://0.0.0.0:8000</span></code>. Klien UI bisa berlangganan ke endpoint ini untuk menerima payload JSON.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pastikan seluruh dependency ROS 2 dan package lain yang dibutuhkan (mis. <code class="docutils literal notranslate"><span class="pre">core_msgs</span></code>, <code class="docutils literal notranslate"><span class="pre">core</span></code>) sudah ter-build dan environment ROS 2 sudah di-source.</p>
+</div>
+</section>
+</section>
+<section id="basic-gcs-ui">
+<h2>Basic-GCS (UI)<a class="headerlink" href="#basic-gcs-ui" title="Link to this heading"></a></h2>
+<p>Dokumentasi ini menjelaskan file-file penting, relasi antar bagian, fungsi/fungsi utama, dan cara menjalankan proyek Basic-GCS.</p>
+<section id="id1">
+<h3>Ringkasan<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Basic-GCS adalah antarmuka Ground Control Station berbasis Next.js (App Router) dengan Tailwind CSS. UI menampilkan telemetry, posisi, status misi, feed kamera, dan hasil deteksi (green/blue box). Data realtime masuk melalui WebSocket.</p>
+</section>
+<section id="struktur-dan-relasi-utama">
+<h3>Struktur dan relasi utama<a class="headerlink" href="#struktur-dan-relasi-utama" title="Link to this heading"></a></h3>
+<p>Alur data utama:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">useTelemetry()</span></code> di <code class="docutils literal notranslate"><span class="pre">src/hook/telemetry.ts</span></code> membuka WebSocket via <code class="docutils literal notranslate"><span class="pre">src/lib/ws.ts</span></code>.</p></li>
+<li><p>Data WebSocket di-parse dan disimpan ke state React.</p></li>
+<li><p>Komponen UI di <code class="docutils literal notranslate"><span class="pre">src/app/page.tsx</span></code> mengambil state dari <code class="docutils literal notranslate"><span class="pre">useTelemetry()</span></code> lalu menampilkan ke komponen-komponen UI.</p></li>
+</ol>
+<p>Relasi file inti:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">src/app/page.tsx</span></code> <strong>mengimpor</strong> komponen UI (Title, GeoTag, GenInfo, PositionLog, Image, Position, Video, Motor) dan <strong>menggunakan</strong> <code class="docutils literal notranslate"><span class="pre">useTelemetry()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/hook/telemetry.ts</span></code> <strong>menggunakan</strong> <code class="docutils literal notranslate"><span class="pre">connectWebSocket</span></code>, <code class="docutils literal notranslate"><span class="pre">onMessage</span></code>, <code class="docutils literal notranslate"><span class="pre">onClose</span></code>, <code class="docutils literal notranslate"><span class="pre">healthcheck</span></code> dari <code class="docutils literal notranslate"><span class="pre">src/lib/ws.ts</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/lib/ws.ts</span></code> <strong>mengambil</strong> konfigurasi host/port dari <code class="docutils literal notranslate"><span class="pre">.env.local</span></code> (lihat <code class="docutils literal notranslate"><span class="pre">.env.local.example</span></code>).</p></li>
+</ul>
+</section>
+<section id="dokumentasi-file-penting">
+<h3>Dokumentasi file penting<a class="headerlink" href="#dokumentasi-file-penting" title="Link to this heading"></a></h3>
+<section id="entry-ui">
+<h4>Entry UI<a class="headerlink" href="#entry-ui" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">src/app/page.tsx</span></code></p>
+<ul>
+<li><p><strong>Fungsi utama:</strong> <code class="docutils literal notranslate"><span class="pre">Home()</span></code></p></li>
+<li><p>Mengambil data telemetry dari <code class="docutils literal notranslate"><span class="pre">useTelemetry()</span></code>.</p></li>
+<li><p>Mendistribusikan data ke komponen-komponen UI.</p></li>
+<li><p>Mengatur layout utama halaman.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/app/layout.tsx</span></code></p>
+<ul>
+<li><p><strong>Fungsi utama:</strong> <code class="docutils literal notranslate"><span class="pre">RootLayout()</span></code></p></li>
+<li><p>Membungkus semua halaman, menambahkan font lokal Geist, dan metadata.</p></li>
+<li><p>Mengimpor <code class="docutils literal notranslate"><span class="pre">src/app/globals.css</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/app/globals.css</span></code> — Styling global dan variabel CSS untuk tema Tailwind.</p></li>
+</ul>
+</section>
+<section id="hook-telemetry">
+<h4>Hook telemetry<a class="headerlink" href="#hook-telemetry" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">src/hook/telemetry.ts</span></code></p>
+<ul>
+<li><p><strong>Fungsi utama:</strong> <code class="docutils literal notranslate"><span class="pre">useTelemetry()</span></code></p></li>
+<li><p>Membuka koneksi WebSocket (<code class="docutils literal notranslate"><span class="pre">connectWebSocket</span></code>).</p></li>
+<li><p>Berlangganan pesan menggunakan <code class="docutils literal notranslate"><span class="pre">onMessage</span></code>.</p></li>
+<li><p>Memetakan topik ke state seperti <code class="docutils literal notranslate"><span class="pre">image</span></code>, <code class="docutils literal notranslate"><span class="pre">greenBox</span></code>, <code class="docutils literal notranslate"><span class="pre">blueBox</span></code>, <code class="docutils literal notranslate"><span class="pre">mission</span></code>, dan data <code class="docutils literal notranslate"><span class="pre">pixhawk</span></code> (lat/lon, speed, yaw, comm, track).</p></li>
+<li><p>Reset state saat koneksi terputus via <code class="docutils literal notranslate"><span class="pre">onClose</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="websocket-layer">
+<h4>WebSocket layer<a class="headerlink" href="#websocket-layer" title="Link to this heading"></a></h4>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/lib/ws.ts</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">connectWebSocket(url?)</span></code>: Membuka koneksi WebSocket, auto-reconnect saat putus.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">onMessage(cb)</span></code>: Subscribe pesan masuk.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">onOpen(cb)</span></code>: Subscribe event open.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">onClose(cb)</span></code>: Subscribe event close.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">healthcheck()</span></code>: Cek status koneksi.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">started()</span></code>: Dipakai untuk reset canvas saat koneksi pertama kali aktif.</p></li>
+</ul>
+<p>Menggunakan env <code class="docutils literal notranslate"><span class="pre">NEXT_PUBLIC_GCS_HOST</span></code> dan <code class="docutils literal notranslate"><span class="pre">NEXT_PUBLIC_GCS_PORT</span></code> (lihat <code class="docutils literal notranslate"><span class="pre">.env.local.example</span></code>).</p>
+</li>
+</ul>
+</section>
+<section id="interface-tipe-data">
+<h4>Interface (tipe data)<a class="headerlink" href="#interface-tipe-data" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">src/lib/interface.ts</span></code> — Mendefinisikan <code class="docutils literal notranslate"><span class="pre">interface</span> <span class="pre">GCS</span></code> dan <code class="docutils literal notranslate"><span class="pre">interface</span> <span class="pre">Initial</span></code>.</p></li>
+</ul>
+</section>
+<section id="komponen-ui">
+<h4>Komponen UI<a class="headerlink" href="#komponen-ui" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">src/app/components/title.tsx</span></code> — <code class="docutils literal notranslate"><span class="pre">Title()</span></code> menampilkan logo dan judul UI.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/app/components/geoTag.tsx</span></code> — <code class="docutils literal notranslate"><span class="pre">GeoTag({</span> <span class="pre">sog,</span> <span class="pre">cog,</span> <span class="pre">lon,</span> <span class="pre">lat</span> <span class="pre">})</span></code> menampilkan waktu, tanggal, SOG, COG, dan koordinat.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/app/components/genInfo.tsx</span></code> — <code class="docutils literal notranslate"><span class="pre">GenInfo({</span> <span class="pre">battery,</span> <span class="pre">temprature</span> <span class="pre">})</span></code> menampilkan informasi baterai dan suhu.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/app/components/positionLog.tsx</span></code> — <code class="docutils literal notranslate"><span class="pre">PositionLog({</span> <span class="pre">status</span> <span class="pre">})</span></code> menampilkan list misi dan statusnya.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/app/components/video.tsx</span></code> — <code class="docutils literal notranslate"><span class="pre">Video({</span> <span class="pre">image,</span> <span class="pre">name</span> <span class="pre">})</span></code> menampilkan feed kamera (base64 PNG).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/app/components/image.tsx</span></code> — <code class="docutils literal notranslate"><span class="pre">Image({</span> <span class="pre">image,</span> <span class="pre">text</span> <span class="pre">})</span></code> menampilkan gambar hasil deteksi (surface/underwater) dan waktu pertama kali gambar diterima.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/app/components/motor.tsx</span></code> — <code class="docutils literal notranslate"><span class="pre">Motor({</span> <span class="pre">speed,</span> <span class="pre">yaw,</span> <span class="pre">communication</span> <span class="pre">})</span></code> menampilkan data kontrol motor dan komunikasi.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/app/components/position.tsx</span></code> — <code class="docutils literal notranslate"><span class="pre">Position({</span> <span class="pre">track,</span> <span class="pre">lon,</span> <span class="pre">lat,</span> <span class="pre">initial_lon,</span> <span class="pre">initial_lat,</span> <span class="pre">prev_lon,</span> <span class="pre">prev_lat</span> <span class="pre">})</span></code> menggambar posisi pada canvas.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/app/components/row.tsx</span></code> — <code class="docutils literal notranslate"><span class="pre">Row({</span> <span class="pre">row</span> <span class="pre">})</span></code> menggambar grid statis (saat ini tidak dipakai; komentar di <code class="docutils literal notranslate"><span class="pre">Position</span></code>).</p></li>
+</ul>
+</section>
+<section id="konfigurasi">
+<h4>Konfigurasi<a class="headerlink" href="#konfigurasi" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">package.json</span></code> — Script penting: <code class="docutils literal notranslate"><span class="pre">dev</span></code>, <code class="docutils literal notranslate"><span class="pre">build</span></code>, <code class="docutils literal notranslate"><span class="pre">start</span></code>, <code class="docutils literal notranslate"><span class="pre">lint</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">next.config.mjs</span></code> — Konfigurasi Next.js.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tailwind.config.ts</span></code> dan <code class="docutils literal notranslate"><span class="pre">postcss.config.mjs</span></code> — Konfigurasi Tailwind dan PostCSS.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">components.json</span></code> — Konfigurasi shadcn/ui (alias, tailwind config, dll).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.env.local.example</span></code> — Contoh konfigurasi host/port WebSocket.</p></li>
+</ul>
+<p>Folder <code class="docutils literal notranslate"><span class="pre">install/</span></code> dan <code class="docutils literal notranslate"><span class="pre">log/</span></code> berisi artefak build/colcon (terlihat terkait ROS2/colcon). Untuk menjalankan UI Next.js, folder ini tidak wajib, namun berguna bila proyek ini diintegrasikan dengan pipeline ROS.</p>
+</section>
+</section>
+<section id="cara-menjalankan">
+<h3>Cara menjalankan<a class="headerlink" href="#cara-menjalankan" title="Link to this heading"></a></h3>
+<p>Prasyarat:</p>
+<ul class="simple">
+<li><p>Node.js (disarankan versi LTS).</p></li>
+<li><p>Server WebSocket GCS berjalan (default port 8000).</p></li>
+</ul>
+<p>Langkah:</p>
+<ol class="arabic">
+<li><p>Salin konfigurasi env: copy <code class="docutils literal notranslate"><span class="pre">.env.local.example</span></code> menjadi <code class="docutils literal notranslate"><span class="pre">.env.local</span></code> dan sesuaikan <code class="docutils literal notranslate"><span class="pre">NEXT_PUBLIC_GCS_HOST</span></code> serta <code class="docutils literal notranslate"><span class="pre">NEXT_PUBLIC_GCS_PORT</span></code>.</p></li>
+<li><p>Install dependency:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>install
+</pre></div>
+</div>
+</li>
+<li><p>Jalankan mode development:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>run<span class="w"> </span>dev
+</pre></div>
+</div>
+</li>
+<li><p>Buka browser: <code class="docutils literal notranslate"><span class="pre">http://localhost:3000</span></code></p></li>
+</ol>
+<p>Build dan production:</p>
+<ul>
+<li><p>Build:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>run<span class="w"> </span>build
+</pre></div>
+</div>
+</li>
+<li><p>Run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>run<span class="w"> </span>start
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="catatan-integrasi">
+<h3>Catatan integrasi<a class="headerlink" href="#catatan-integrasi" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Data telemetry diproses berdasarkan <code class="docutils literal notranslate"><span class="pre">topic</span></code> pada payload WebSocket.</p></li>
+<li><p>Topik yang dikenali di <code class="docutils literal notranslate"><span class="pre">useTelemetry()</span></code>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">processed</span></code> → <code class="docutils literal notranslate"><span class="pre">image</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show_green</span></code> → <code class="docutils literal notranslate"><span class="pre">greenBox</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show_blue</span></code> → <code class="docutils literal notranslate"><span class="pre">blueBox</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mission</span></code> → <code class="docutils literal notranslate"><span class="pre">mission</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pixhawk</span></code> → lat/lon, speed, yaw, comm, track</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="core_control.html" class="btn btn-neutral float-left" title="core_control" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../issues_docs.html" class="btn btn-neutral float-right" title="Issues Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, AMV-UI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
